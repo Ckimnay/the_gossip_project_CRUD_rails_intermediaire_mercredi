@@ -1,0 +1,16 @@
+<h1>Modifier ton potin</h1>
+<p> Rentre ton potin  </p>
+<% if flash[:error] %>
+    <div class="alert alert-danger" role="alert">
+        <%=  flash[:error] %>
+    </div>
+    <% end %>
+<%= form_tag url_for(action: 'update'), method: "patch" do %>
+  <%= label_tag 'Gossip title : ' %>
+  <%= text_field_tag 'title', @gossip.title %>
+  <br /> <br />
+  <%= label_tag 'Content : ' %>
+  <%= text_area_tag 'content', @gossip.content %>
+  <br /> <br />
+  <%= submit_tag "Modifier", class: "btn btn-secondary " %>
+<% end %>

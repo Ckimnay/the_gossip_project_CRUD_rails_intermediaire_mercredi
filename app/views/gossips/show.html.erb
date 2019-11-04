@@ -1,0 +1,31 @@
+<div class="container my-5">
+  
+
+titre: <%= @gossip.title %><br>
+contenu: <%= @gossip.content %> <br>
+prénom: <%= @gossip.user.first_name%><br>
+ville: <%= @gossip.user.city.name %>
+
+<%= form_tag '/comments', method: "post" do %>
+  <%= label_tag 'comment : ' %>
+  <%= text_area_tag 'content', @comment.content %>
+  <input name="gossip_id" type="hidden" value="<%= @gossip.id %>">
+  <br /> <br />
+  <%= submit_tag "Create comment", class: "btn btn-secondary " %>
+<% end %>
+
+<br>
+<% if @comments %>
+  <% @comments.each do |comment| %>
+    <%= comment.content %> <br>
+    <%= comment.user.first_name %>
+    <%= link_to "lien", edit_comment_path(comment.id), class:"btn btn-primary" %>
+    <%= link_to "Destroy",comment_path(comment.id), method: :delete %>
+
+
+    <hr>
+    <br>
+  <% end %>
+<% end %>
+</div>
+

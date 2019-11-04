@@ -1,0 +1,6 @@
+<%= form_tag comment_path, method: "put" do %>
+  <%= label_tag 'comment : ' %>
+  <%= text_area_tag 'content', @comment.content %>
+  <br /> <br />
+  <%= submit_tag "Create comment", class: "btn btn-secondary " %>
+<% end %>

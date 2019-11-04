@@ -1,0 +1,27 @@
+
+    <div class="card">
+  <h5 class="card-header">Gossip</h5>
+  <div class="card-body">
+    <% if flash[:success] %>
+    <div class="alert alert-success" role="alert">
+        <%=  flash[:success] %>
+    </div>
+    <% end %>
+<% Gossip.all.each do |gossip| %> 
+    <h5 class="card-title">
+        <%= gossip.title %>    
+    </h5>
+    <p class="card-text">
+        <%= gossip.content %>
+    </p>
+    <p class="card-text">
+        <%= gossip.comments.count %>
+    </p>
+<%= link_to "lien", gossip_path(gossip.id), class:"btn btn-primary" %>
+<%= link_to "Destroy",gossip_path( gossip.id), method: :delete %>
+
+<br/>
+   <% end %> 
+
+  </div>
+</div>
